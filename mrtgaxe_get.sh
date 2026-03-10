@@ -33,42 +33,29 @@ if [ $? -ne 0 ] || [ -z "$DATA" ]; then
     exit 1
 fi
 
-# Parse all metrics once
-HASHRATE=$(echo "$DATA" | jq -r '.hashRate // 0')
-HASHRATE_1M=$(echo "$DATA" | jq -r '.hashRate_1m // 0')
-HASHRATE_10M=$(echo "$DATA" | jq -r '.hashRate_10m // 0')
-HASHRATE_1H=$(echo "$DATA" | jq -r '.hashRate_1h // 0')
-TEMP=$(echo "$DATA" | jq -r '.temp // 0')
-VRM=$(echo "$DATA" | jq -r '.vrTemp // 0')
-POWER=$(echo "$DATA" | jq -r '.power // 0')
-VOLTAGE=$(echo "$DATA" | jq -r '.voltage // 0')
-CURRENT=$(echo "$DATA" | jq -r '.current // 0')
-COREVOLT=$(echo "$DATA" | jq -r '.coreVoltage // 0')
-COREVOLT_ACTUAL=$(echo "$DATA" | jq -r '.coreVoltageActual // 0')
-BESTDIFF=$(echo "$DATA" | jq -r '.bestDiff // 0')
-POOLDIFF=$(echo "$DATA" | jq -r '.poolDifficulty // 0')
-ERRORPERC=$(echo "$DATA" | jq -r '.errorPercentage // 0')
-UPTIME=$(echo "$DATA" | jq -r '.uptime // 0')
-UPTIME_HOURS=$((UPTIME / 3600))
+# Base function:
+get_metric() {
+	echo "$DATA" | jq -r "$1" 
+}
 
 # Map metric name to value
 get_value() {
     case "$1" in
-        hashrate) echo "$HASHRATE" ;;
-        hash_1m) echo "$HASHRATE_1M" ;;
-        hash_10m) echo "$HASHRATE_10M" ;;
-        hash_1h) echo "$HASHRATE_1H" ;;
-        temp) echo "$TEMP" ;;
-        vrTemp) echo "$VRM" ;;
-        power) echo "$POWER" ;;
-        voltage) echo "$VOLTAGE" ;;
-        current) echo "$CURRENT" ;;
-        corevoltage) echo "$COREVOLT" ;;
-        corevoltageact) echo "$COREVOLT_ACTUAL" ;;
-        bestdiff) echo "$BESTDIFF" ;;
-        pooldiff) echo "$POOLDIFF" ;;
-        errorperc) echo "$ERRORPERC" ;;
-        uptime) echo "$UPTIME_HOURS" ;;
+        hashrate) echo "$(get_metric '.hashRate // 0')" ;;
+        expectedHashrate) echo "$(get_metric '.expectedHashrate // 0')" ;;
+        temp) echo "$(get_metric '.temp // 0')" ;;
+        vrTemp) echo "$(get_metric '.vrTemp // 0')" ;;
+        power) echo "$(get_metric '.power // 0')" ;;
+        voltage) echo "$(get_metric '.voltage // 0')" ;;
+        current) echo "$(get_metric '.current // 0')" ;;
+        corevoltage) echo "$(get_metric '.coreVoltage // 0')" ;;
+        coreVoltageActual) echo "$(get_metric '.coreVoltageActual // 0')" ;;
+        frequency) echo "$(get_metric '.frequency // 0')" ;;
+        poolDifficulty) echo "$(get_metric '.poolDifficulty // 0')" ;;
+        bestdiff) echo "$(get_metric '.bestDiff // 0')" ;;
+        pooldiff) echo "$(get_metric '.poolDifficulty // 0')" ;;
+        errorperc) echo "$(get_metric '.errorPercentage // 0')" ;;
+        uptime) echo "$(get_metric '.uptime // 0')" ;;
         *) echo "0" ;;
     esac
 }
@@ -83,5 +70,5 @@ VAL2=$(get_value "${METRICS[1]}")
 # MRTG requires 4 lines
 echo "$VAL1"
 echo "$VAL2"
-echo "$UPTIME_HOURS"
+echo "$((UPTIME / 3600))"
 echo "bitaxe-$BITAXE_IP"
