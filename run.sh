@@ -26,12 +26,12 @@ if [ ! -f $BITAXE_DIR/mrtg/index.html ] ; then
 	indexmaker $BITAXE_DIR/mrtg.cfg --output=$BITAXE_DIR/mrtg/index.html
 fi
 
-echo $BITAXE_SCRIPT 
-echo $BITAXE_DIR
 
 # Load mrtg
 LANG=C mrtg --daemon $PWD/mrtg.cfg
 if [ $? -ne 0 ] ; then 
 	exit 255
 fi
-setsid busybox httpd -p 9999 -h /var/www/mrtg >/dev/null 2>&1 &
+# Load Busybox
+setsid busybox httpd -p 9999 -h $BITAXE_DIR/mrtg >/dev/null 2>&1 &
+if [ $? -eq 0 ] ; then echo Daemonizing Busybox ... ; fi
