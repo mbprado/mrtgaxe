@@ -28,8 +28,8 @@ mkdir -p $PWD/miners
 
 # Check if there is an index available
 if [ ! -f $BITAXE_DIR/mrtg/index.html ] ; then 
-	echo Create index
-	indexmaker $BITAXE_DIR/mrtg.cfg --output=$BITAXE_DIR/mrtg/index.html
+	echo Creating index ...
+	indexmaker $BITAXE_DIR/mrtg.cfg --output=$BITAXE_DIR/mrtg/index.html --title="MRTGaxe MRTG Dashboard" --sectionhost --headeradd '<img src="logo.png" alt="Logo" style="max-height:50px;">'
 fi
 
 
@@ -41,7 +41,6 @@ fi
 # Load Busybox
 setsid busybox httpd -p $BUSYBOX_PORT -h $BITAXE_DIR/mrtg >/dev/null 2>&1 &
 if [ $? -eq 0 ] ; then 
-	echo Daemonizing Busybox ...
-	echo -e \\n
+	echo "Daemonizing Busybox ..."
 	echo "To access the dashboard head to: http://$LOCAL_IP:$BUSYBOX_PORT"
 fi

@@ -55,7 +55,11 @@ get_value() {
         bestdiff) echo "$(get_metric '.bestDiff // 0')" ;;
         pooldiff) echo "$(get_metric '.poolDifficulty // 0')" ;;
         errorperc) echo "$(get_metric '.errorPercentage // 0')" ;;
-        uptime) echo "$(get_metric '.uptime // 0')" ;;
+        uptime) echo "$(get_metric '.uptimeSeconds // 0')" ;;
+	wifiRSSI)  echo "$(get_metric '.wifiRSSI // 0')" ;;
+	responseTime) echo "$(get_metric '.responseTime // 0')" ;;
+	sharesAccepted) echo "$(get_metric '.sharesAccepted // 0')" ;;
+	sharesRejected) echo "$(get_metric '.sharesRejected // 0')" ;;
         *) echo "0" ;;
     esac
 }
@@ -70,5 +74,5 @@ VAL2=$(get_value "${METRICS[1]}")
 # MRTG requires 4 lines
 echo "$VAL1"
 echo "$VAL2"
-echo "$((UPTIME / 3600))"
+echo "$(( $(get_metric '.uptimeSeconds // 0') /3600 ))"
 echo "bitaxe-$BITAXE_IP"

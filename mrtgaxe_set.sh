@@ -56,10 +56,11 @@ cat <<'EOF' | sed -e "s/MINER_NAME/$MINER_NAME/g" -e "s/MINER_INAME/$MINER_INAME
 #################################################################################
 
 # Input and ASIC Core Voltage 
-Target[MINER_NAME_voltage_current]: `${BITAXE_SCRIPT} -d MINER_IP -m voltage -m corevoltage`
+Target[MINER_NAME_voltage_current]: `${BITAXE_SCRIPT} -d MINER_IP -m voltage -m coreVoltageActual`
 MaxBytes[MINER_NAME_voltage_current]: 20000
+kMG[MINER_NAME_voltage_current]:
 Title[MINER_NAME_voltage_current]: MINER_INAME Voltage
-PageTop[MINER_NAME_voltage_current]: <h1>MINER_INAME Input and Core Voltage</h1>
+PageTop[MINER_NAME_voltage_current]: <h1>MINER_INAME - Input and Core Voltage</h1>
 Options[MINER_NAME_voltage_current]: gauge, growright, nopercent
 YLegend[MINER_NAME_voltage_current]: Voltage 
 ShortLegend[MINER_NAME_voltage_current]: mV
@@ -72,7 +73,7 @@ LegendO[MINER_NAME_voltage_current]: ASIC
 Target[MINER_NAME_temp_vrm]: `${BITAXE_SCRIPT} -d MINER_IP -m temp -m vrTemp`
 MaxBytes[MINER_NAME_temp_vrm]: 100
 Title[MINER_NAME_temp_vrm]: MINER_INAME ASIC & VRM Temp
-PageTop[MINER_NAME_temp_vrm]: <h1>MINER_INAME ASIC and VRM Temperature</h1>
+PageTop[MINER_NAME_temp_vrm]: <h1>MINER_INAME - ASIC and VRM Temperature</h1>
 Options[MINER_NAME_temp_vrm]: gauge, growright, nopercent
 YLegend[MINER_NAME_temp_vrm]: Temperature
 ShortLegend[MINER_NAME_temp_vrm]: °C
@@ -81,24 +82,37 @@ Legend2[MINER_NAME_temp_vrm]: VRM Temp
 LegendI[MINER_NAME_temp_vrm]: ASIC
 LegendO[MINER_NAME_temp_vrm]: VRM
 
+# ASIC Frequency
+Target[MINER_NAME_frequency]: `${BITAXE_SCRIPT} -d MINER_IP -m frequency`
+MaxBytes[MINER_NAME_frequency]: 1500
+Title[MINER_NAME_frequency]: MINER_INAME ASIC Clock
+PageTop[MINER_NAME_frequency]: <h1>MINER_INAME - ASIC Clock</h1>
+Options[MINER_NAME_frequency]: gauge, growright, nopercent
+YLegend[MINER_NAME_frequency]: Clock
+ShortLegend[MINER_NAME_frequency]: MHz
+Legend1[MINER_NAME_frequency]: ASIC Clock
+Legend2[MINER_NAME_frequency]: None
+LegendI[MINER_NAME_frequency]: ASIC Clock
+LegendO[MINER_NAME_frequency]: 
+
 # Hashrate Current Avg
-Target[MINER_NAME_hash_1m]: `${BITAXE_SCRIPT} -d MINER_IP -m hashrate`
+Target[MINER_NAME_hash_1m]: `${BITAXE_SCRIPT} -d MINER_IP -m hashrate -m expectedHashrate`
 MaxBytes[MINER_NAME_hash_1m]: 5000
 Title[MINER_NAME_hash_1m]: MINER_INAME Hashrate 
-PageTop[MINER_NAME_hash_1m]: <h1>MINER_INAME Hash Rate</h1>
+PageTop[MINER_NAME_hash_1m]: <h1>MINER_INAME - Hash Rate</h1>
 Options[MINER_NAME_hash_1m]: gauge, growright, nopercent
 YLegend[MINER_NAME_hash_1m]: Hash Rate
 ShortLegend[MINER_NAME_hash_1m]: GH/s
 Legend1[MINER_NAME_hash_1m]: Hash Rate
-Legend2[MINER_NAME_hash_1m]: None
-LegendI[MINER_NAME_hash_1m]: Hash Rate
-LegendO[MINER_NAME_hash_1m]: 
+Legend2[MINER_NAME_hash_1m]: Expected
+LegendI[MINER_NAME_hash_1m]: Current
+LegendO[MINER_NAME_hash_1m]: Expected
 
 # Power Consumption
 Target[MINER_NAME_power]: `${BITAXE_SCRIPT} -d MINER_IP -m power`
 MaxBytes[MINER_NAME_power]: 2000
 Title[MINER_NAME_power]: MINER_INAME Power
-PageTop[MINER_NAME_power]: <h1>MINER_INAME Power</h1>
+PageTop[MINER_NAME_power]: <h1>MINER_INAME - Power</h1>
 Options[MINER_NAME_power]: gauge, growright, nopercent
 YLegend[MINER_NAME_power]: Power
 ShortLegend[MINER_NAME_power]: W
@@ -111,7 +125,7 @@ LegendO[MINER_NAME_power]:
 Target[MINER_NAME_error]: `${BITAXE_SCRIPT} -d MINER_IP -m errorperc`
 MaxBytes[MINER_NAME_error]: 100
 Title[MINER_NAME_error]: MINER_INAME Error Rate
-PageTop[MINER_NAME_error]: <h1>MINER_INAME Error Rate</h1>
+PageTop[MINER_NAME_error]: <h1>MINER_INAME - Error Rate</h1>
 Options[MINER_NAME_error]: gauge, growright, nopercent
 YLegend[MINER_NAME_error]: Miner Error
 ShortLegend[MINER_NAME_error]: %
@@ -124,7 +138,7 @@ LegendO[MINER_NAME_error]:
 Target[MINER_NAME_diff]: `${BITAXE_SCRIPT} -d MINER_IP -m pooldiff`
 MaxBytes[MINER_NAME_diff]: 2000
 Title[MINER_NAME_diff]: MINER_INAME Pool Difficulty
-PageTop[MINER_NAME_diff]: <h1>MINER_INAME Pool Difficulty</h1>
+PageTop[MINER_NAME_diff]: <h1>MINER_INAME - Pool Difficulty</h1>
 Options[MINER_NAME_diff]: gauge, growright, nopercent
 YLegend[MINER_NAME_diff]: Difficulty
 ShortLegend[MINER_NAME_diff]: d
@@ -137,7 +151,7 @@ LegendO[MINER_NAME_diff]:
 Target[MINER_NAME_uptime]: `${BITAXE_SCRIPT} -d MINER_IP -m uptime`
 MaxBytes[MINER_NAME_uptime]: 100000
 Title[MINER_NAME_uptime]: MINER_INAME Uptime
-PageTop[MINER_NAME_uptime]: <h1>MINER_INAME Uptime</h1>
+PageTop[MINER_NAME_uptime]: <h1>MINER_INAME - Uptime</h1>
 Options[MINER_NAME_uptime]: gauge, growright, nopercent
 YLegend[MINER_NAME_uptime]: Uptime Hours
 ShortLegend[MINER_NAME_uptime]: h
