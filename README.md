@@ -1,7 +1,8 @@
-# MRTGaxe
+# MRTGAxe
 
 MRTGaxe is a simple lightweight monitoring solution for esp-miner based mining devices such as Bitaxe and Nerdaxe. It's suitable for use with multiple devices and plots system metrics using **MRTG** and **BusyBox**. Designed for simplicity, it allows you to quickly deploy monitoring with minimal setup and resource usage. 
 
+This is intended for long term analysys, while AxeOS interface by default does't store this type of data, MRTG can keep track up to one year without log growing, like other monitoring tools. Ideal for quick insights and profiling.
 ---
 
 ## Features
@@ -21,10 +22,10 @@ MRTGaxe is a simple lightweight monitoring solution for esp-miner based mining d
 
 ## Caeveats, Drawbacks "FAQ"
 
-- **Why it is not written in Python?**: While it would be still very convenient, Python and its libraryes requires extra setup and storage space.
+- **Why it is not written in Python?**: While it would be still very convenient, Python and its libraries requires extra setup and storage space.
 - **MRTG interface is so ugly and seems outdated**: That's true, there are many options out there with better interfaces, like Graphana, but the intention here is easy and ligh setup (M.I.S.S.)
 - **Can I use it with Apache, Nginx?**: Absolutely. You can use only the mrtg.cfg file and setup it in youw own web environment.
-- ** 
+- **Any plans porting it to Windos/Mac?**: Yes, probably with docker but at the cost of simplicity of deployment.
 
 ---
 ## Prerequisites 
@@ -47,8 +48,12 @@ cd mrtgaxe
 ```
 
 2. Add your first device
+
+As example, our device IP is **192.168.0.200** and we name it **Miner 1** 
+Note: If the name contains spaces, it must be placed between quotes.
+
 ```bash
-./mrtgaxe_set.sh -d <bitaxe_ip> -n <bitaxe_name>
+./mrtgaxe_set.sh -d 192.168.0.200 -n "Miner 1"
 ```
 
 3. Start MRTG
@@ -59,4 +64,7 @@ cd mrtgaxe
 ---
 ### Accessing the graphics
 
+If the script runs fine, you will see the access link in the bottom of the screen. By default, busybox runs on port 9999, to avoid conflicts with other services you could eventually have. It can be changed setting the PORT variable in the mrtgaxe_run.sh
 
+--
+### To Do
