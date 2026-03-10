@@ -4,6 +4,7 @@ export BITAXE_SCRIPT=$PWD/mrtgaxe_get.sh
 
 #Set the configuration file:
 sed -i "s|^WorkDir:.*|WorkDir: $BITAXE_DIR/mrtg|" mrtg.cfg
+sed -i "s|^Include:.*|Include: $BITAXE_DIR/miners/*.cfg|" mrtg.cfg
 
 # Check if busybox is installed 
 busybox > /dev/null 2>&1
@@ -19,6 +20,7 @@ if [ ! -f /usr/bin/mrtg ] ; then
 fi
 
 mkdir -p $PWD/mrtg
+mkdir -p $PWD/miners
 
 # Check if there is an index available
 if [ ! -f $BITAXE_DIR/mrtg/index.html ] ; then 
