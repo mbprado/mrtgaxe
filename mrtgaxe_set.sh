@@ -95,19 +95,6 @@ Legend2[MINER_NAME_frequency]: None
 LegendI[MINER_NAME_frequency]: ASIC Clock
 LegendO[MINER_NAME_frequency]: 
 
-# Hashrate Current Avg
-Target[MINER_NAME_hash_1m]: `${BITAXE_SCRIPT} -d MINER_IP -m hashrate -m expectedHashrate`
-MaxBytes[MINER_NAME_hash_1m]: 5000
-Title[MINER_NAME_hash_1m]: MINER_INAME Hashrate 
-PageTop[MINER_NAME_hash_1m]: <h1>MINER_INAME - Hash Rate</h1>
-Options[MINER_NAME_hash_1m]: gauge, growright, nopercent
-YLegend[MINER_NAME_hash_1m]: Hash Rate
-ShortLegend[MINER_NAME_hash_1m]: GH/s
-Legend1[MINER_NAME_hash_1m]: Hash Rate
-Legend2[MINER_NAME_hash_1m]: Expected
-LegendI[MINER_NAME_hash_1m]: Current
-LegendO[MINER_NAME_hash_1m]: Expected
-
 # Power Consumption
 Target[MINER_NAME_power]: `${BITAXE_SCRIPT} -d MINER_IP -m power`
 MaxBytes[MINER_NAME_power]: 2000
@@ -146,6 +133,19 @@ Legend1[MINER_NAME_rpm]: Fan 1 Speed
 Legend2[MINER_NAME_rpm]: Fan 2 Speed
 LegendI[MINER_NAME_rpm]: Fan 1
 LegendO[MINER_NAME_rpm]: Fan 2
+
+# Hashrate Current Avg
+Target[MINER_NAME_hash_1m]: `${BITAXE_SCRIPT} -d MINER_IP -m hashrate -m expectedHashrate`
+MaxBytes[MINER_NAME_hash_1m]: 5000
+Title[MINER_NAME_hash_1m]: MINER_INAME Hashrate 
+PageTop[MINER_NAME_hash_1m]: <h1>MINER_INAME - Hash Rate</h1>
+Options[MINER_NAME_hash_1m]: gauge, growright, nopercent
+YLegend[MINER_NAME_hash_1m]: Hash Rate
+ShortLegend[MINER_NAME_hash_1m]: GH/s
+Legend1[MINER_NAME_hash_1m]: Hash Rate
+Legend2[MINER_NAME_hash_1m]: Expected
+LegendI[MINER_NAME_hash_1m]: Current
+LegendO[MINER_NAME_hash_1m]: Expected
 
 # Response time
 Target[MINER_NAME_response]: `${BITAXE_SCRIPT} -d MINER_IP -m power`
