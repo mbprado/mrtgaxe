@@ -88,7 +88,7 @@ Options:
 ### To Do
 
 ---
-Refetence:
+Reference:
 
 Bitaxe Project: https://github.com/bitaxeorg  
 MRTG: https://oss.oetiker.ch/mrtg
