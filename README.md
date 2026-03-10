@@ -72,21 +72,21 @@ By default, busybox runs on port 9999, to avoid conflicts with other services yo
 
 #### Scripts 
 
-1. **mrtgaxe_set.sh**
+1. **mrtgaxe_set.sh** -d <device_ip> -n <name> [-f]  
 This script is used to create configuration files for MRTG. Creating multiple files will create multiple devices in dashboard.  
 Files are saved inside **./miners** directory 
 
-Options:
+Options: 
 **-d**: Defines the device to be monirtored. IP address or hostname. A single device per file, for multiple devices, create multiple files. 
 **-n**: Device the device name that will be shown in the metrics and dashboard. Quote names with spaces and special characters. 
 **-f**: By default mrtgaxe prevents rewriting files with same device name. Use this option to overcome it. 
 
-2. **mrtgaxe_get.sh**
+2. **mrtgaxe_get.sh** -d <bitaxe_ip> -m metric1 [-m metric2]  
 This script is the interface between Bitaxes and MRTG. Its simple task is translate json replies into mrtg readable metrics. There is no need to interact with this script except for troubleshooting or customization. 
 
 Options: 
-**-d**: Defines the host to be monitored. IP address or hostname. A single device per request. 
-**-m**: Metrics to be taken from the device. supports multiple -m metrics, however note that MRTG can handle only **two** metrics per graph. 
+**-d**: Defines the host to be monitored. IP address or hostname. A single device per request.  
+**-m**: Metrics to be taken from the device. supports multiple -m metrics, however note that MRTG can handle only **two** metrics per graph.  
 
 Typical output:
 ```bash
