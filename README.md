@@ -71,7 +71,7 @@ If the script runs fine, you will see the access link in the bottom of the scree
 ### To Do
 
 ---
-Refetence:
+Reference:
 
 Bitaxe Project: https://github.com/bitaxeorg  
 MRTG: https://oss.oetiker.ch/mrtg
