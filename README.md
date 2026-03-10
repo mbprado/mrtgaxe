@@ -27,7 +27,16 @@ MRTGaxe is a simple lightweight monitoring solution for esp-miner based mining d
 - ** 
 
 ---
+## Prerequisites 
+All you need is a Linux with **MRTG** and **Busybox** installed. Both packages are found on the main repository of most distros. This quide will assume that you have Raspbian installed in a Raspberry Pi, but it can theoretically run in any other machine. I'm not covering how to make a initial Respberry Pi setup, but it can be easily found in form of several guides over the internet.
 
+1. install the required packages:
+
+```bash
+sudo apt update
+sudo apt -y install mrtg busybox
+```
+---
 ## Quick Start
 
 1. Clone the repository:
@@ -35,7 +44,19 @@ MRTGaxe is a simple lightweight monitoring solution for esp-miner based mining d
 ```bash
 git clone https://github.com/mbprado/mrtgaxe.git
 cd mrtgaxe
+```
+
+2. Add your first device
+```bash
+./mrtgaxe_set.sh -d <bitaxe_ip> -n <bitaxe_name>
+```
+
+3. Start MRTG
+```bash
+./mrtgaxe_run.sh
+```
+
+---
+### Accessing the graphics
 
 
-# setup.sh
-Simple monitoring for Bitaxes using mrtg
