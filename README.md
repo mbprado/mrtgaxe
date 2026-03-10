@@ -1,6 +1,7 @@
 # MRTGAxe
 
-MRTGaxe is a simple lightweight monitoring solution for esp-miner based mining devices such as Bitaxe and Nerdaxe. It's suitable for use with multiple devices and plots system metrics using **MRTG** and **BusyBox**. Designed for simplicity, it allows you to quickly deploy monitoring with minimal setup and resource usage. 
+MRTGaxe is a simple lightweight monitoring solution for esp-miner based mining devices such as Bitaxe and Nerdaxe. It's suitable for use with multiple devices and plots system metrics using **MRTG** and **BusyBox**. 
+Designed for simplicity, it allows you to quickly deploy monitoring with minimal setup and resource usage. 
 This is intended for long term analysys, while AxeOS interface by default does't store this type of data, MRTG can keep track up to one year without log growing, like other monitoring tools. Ideal for quick insights and profiling.
 
 ---
@@ -49,7 +50,7 @@ cd mrtgaxe
 
 2. Add your first device
 
-As example, our device IP is **192.168.0.200** and we name it **Miner 1** 
+As example, our device IP is **192.168.0.200** and we name it **Miner 1**. 
 Note: If the name contains spaces, it must be placed between quotes.
 
 ```bash
