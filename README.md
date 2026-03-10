@@ -63,9 +63,26 @@ Note: If the name contains spaces, it must be placed between quotes.
 ```
 
 ---
-### Accessing the graphics
+### Usage:
+
+#### Accessing the graphics
 
 If the script runs fine, you will see the access link in the bottom of the screen. By default, busybox runs on port 9999, to avoid conflicts with other services you could eventually have. It can be changed setting the PORT variable in the mrtgaxe_run.sh
+
+#### Scripts 
+
+1. mrtgaxe_set.sh
+This script is used to create configuration files for MRTG. Creating multiple files will create multiple devices in dashboard.  
+Files are saved inside **./miners** directory 
+
+Options:
+```bash
+**-d** : Defines the device to be monirtored. IP address or hostname. A single device per file, for multiple devices, create multiple files.
+**-n** : Device the device name that will be shown in the metrics and dashboard. Quote names with spaces and special characters.
+**-f** : By default mrtgaxe prevents rewriting files with same device name. Use this option to overcome it.
+``` 
+
+
 
 ---
 ### To Do
