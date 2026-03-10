@@ -1,6 +1,10 @@
 #!/bin/bash
+BUSYBOX_PORT=9999
+LOCAL_IP=$(hostname -I | cut -d' ' -f1)
+
 export BITAXE_DIR=$PWD
 export BITAXE_SCRIPT=$PWD/mrtgaxe_get.sh
+
 
 #Set the configuration file:
 sed -i "s|^WorkDir:.*|WorkDir: $BITAXE_DIR/mrtg|" mrtg.cfg
@@ -35,5 +39,9 @@ if [ $? -ne 0 ] ; then
 	exit 255
 fi
 # Load Busybox
-setsid busybox httpd -p 9999 -h $BITAXE_DIR/mrtg >/dev/null 2>&1 &
-if [ $? -eq 0 ] ; then echo Daemonizing Busybox ... ; fi
+setsid busybox httpd -p $BUSYBOX_PORT -h $BITAXE_DIR/mrtg >/dev/null 2>&1 &
+if [ $? -eq 0 ] ; then 
+	echo Daemonizing Busybox ...
+	echo -e \\n
+	echo "To access the dashboard head to: http://$LOCAL_IP:$BUSYBOX_PORT"
+fi
