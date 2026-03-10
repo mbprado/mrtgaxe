@@ -67,22 +67,45 @@ Note: If the name contains spaces, it must be placed between quotes.
 
 #### Accessing the graphics
 
-If the script runs fine, you will see the access link in the bottom of the screen. By default, busybox runs on port 9999, to avoid conflicts with other services you could eventually have. It can be changed setting the PORT variable in the mrtgaxe_run.sh
+If the script runs fine, you will see the access link in the bottom of the screen.  
+By default, busybox runs on port 9999, to avoid conflicts with other services you could eventually have. It can be changed setting the PORT variable in the mrtgaxe_run.sh
 
 #### Scripts 
 
-1. mrtgaxe_set.sh
+1. **mrtgaxe_set.sh**
 This script is used to create configuration files for MRTG. Creating multiple files will create multiple devices in dashboard.  
 Files are saved inside **./miners** directory 
 
 Options:
+**-d**: Defines the device to be monirtored. IP address or hostname. A single device per file, for multiple devices, create multiple files.
+**-n**: Device the device name that will be shown in the metrics and dashboard. Quote names with spaces and special characters.
+**-f**: By default mrtgaxe prevents rewriting files with same device name. Use this option to overcome it.
+
+2. **mrtgaxe_get.sh**
+This script is the interface between Bitaxes and MRTG. Its simple task is translate json replies into mrtg readable metrics. There is no need to interact with this script except for troubleshooting or customization.
+
+Options: 
+**-d**: Defines the host to be monitored. IP address or hostname. A single device per request.
+**-m**: Metrics to be taken from the device. supports multiple -m metrics, however note that MRTG can handle only **two** metrics per graph.
+
+Typical output:
 ```bash
-**-d** : Defines the device to be monirtored. IP address or hostname. A single device per file, for multiple devices, create multiple files.
-**-n** : Device the device name that will be shown in the metrics and dashboard. Quote names with spaces and special characters.
-**-f** : By default mrtgaxe prevents rewriting files with same device name. Use this option to overcome it.
-``` 
+metric1
+metric2
+system_uptime
+system_information
+```
+3. **mrtgaxe_run.sh**
+This script do all the necessary checks, set the parameters and run both MRTG and Busybox. This is the entrypoint for MRTGAxe
 
+Options:
+**-i**: Index file creation. By default, the index.html file(dashboard) is created only at the first run. Use this option if you want to recreate it. 
 
+4. **mrtgaxe_stop.sh**
+Self-explanatory. This script stops MRTG and Busybox.
+
+Options:  
+This script has no options. 
 
 ---
 ### To Do
