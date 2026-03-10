@@ -1,6 +1,9 @@
 #!/bin/bash
 BUSYBOX_PORT=9999
 LOCAL_IP=$(hostname -I | cut -d' ' -f1)
+INDEX=0
+if [[ $1 == "-h" ]] ; then echo "Options: -i - Force index rebuild" ; exit 1 ; fi
+if [[ $1 == "-i" ]] ; then INDEX=1 ; fi
 
 export BITAXE_DIR=$PWD
 export BITAXE_SCRIPT=$PWD/mrtgaxe_get.sh
@@ -27,9 +30,10 @@ mkdir -p $PWD/mrtg
 mkdir -p $PWD/miners
 
 # Check if there is an index available
-if [ ! -f $BITAXE_DIR/mrtg/index.html ] ; then 
+if [ ! -f $BITAXE_DIR/mrtg/index.html ] || [ $INDEX -eq 1 ] ; then 
 	echo Creating index ...
 	indexmaker $BITAXE_DIR/mrtg.cfg --output=$BITAXE_DIR/mrtg/index.html --title="MRTGaxe MRTG Dashboard" --sectionhost --headeradd '<img src="logo.png" alt="Logo" style="max-height:50px;">'
+	cp logo.png mrtg/logo.png
 fi
 
 

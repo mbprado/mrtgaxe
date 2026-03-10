@@ -77,5 +77,5 @@ VAL2=$(get_value "${METRICS[1]}")
 # MRTG requires 4 lines
 echo "$VAL1"
 echo "$VAL2"
-echo "$(( $(get_metric '.uptimeSeconds // 0') /3600 ))"
+echo "$(( $(get_metric '.uptimeSeconds // 0') /3600 ))h"
 echo "$(get_metric '.hostname // 0'), $(get_metric '.ASICModel // 0'), board:$(get_metric '.boardVersion // 0'), fw:$(get_metric '.version // 0')"
