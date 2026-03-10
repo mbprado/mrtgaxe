@@ -60,6 +60,9 @@ get_value() {
 	responseTime) echo "$(get_metric '.responseTime // 0')" ;;
 	sharesAccepted) echo "$(get_metric '.sharesAccepted // 0')" ;;
 	sharesRejected) echo "$(get_metric '.sharesRejected // 0')" ;;
+	fanspeed) echo "$(get_metric '.fanspeed // 0')" ;;
+	fanrpm) echo "$(get_metric '.fanrpm // 0')" ;;
+	fan2rpm) echo "$(get_metric '.fan2rpm // 0')" ;;
         *) echo "0" ;;
     esac
 }
@@ -75,4 +78,4 @@ VAL2=$(get_value "${METRICS[1]}")
 echo "$VAL1"
 echo "$VAL2"
 echo "$(( $(get_metric '.uptimeSeconds // 0') /3600 ))"
-echo "bitaxe-$BITAXE_IP"
+echo "$(get_metric '.hostname // 0'), $(get_metric '.ASICModel // 0'), board:$(get_metric '.boardVersion // 0'), fw:$(get_metric '.version // 0')"
