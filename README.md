@@ -1,8 +1,8 @@
 # MRTGAxe
 
 MRTGaxe is a simple lightweight monitoring solution for esp-miner based mining devices such as Bitaxe and Nerdaxe. It's suitable for use with multiple devices and plots system metrics using **MRTG** and **BusyBox**. Designed for simplicity, it allows you to quickly deploy monitoring with minimal setup and resource usage. 
-
 This is intended for long term analysys, while AxeOS interface by default does't store this type of data, MRTG can keep track up to one year without log growing, like other monitoring tools. Ideal for quick insights and profiling.
+
 ---
 
 ## Features
@@ -66,5 +66,11 @@ Note: If the name contains spaces, it must be placed between quotes.
 
 If the script runs fine, you will see the access link in the bottom of the screen. By default, busybox runs on port 9999, to avoid conflicts with other services you could eventually have. It can be changed setting the PORT variable in the mrtgaxe_run.sh
 
---
+---
 ### To Do
+
+---
+Refetence:
+
+Bitaxe Project: https://github.com/bitaxeorg
+MRTG: https://oss.oetiker.ch/mrtg
