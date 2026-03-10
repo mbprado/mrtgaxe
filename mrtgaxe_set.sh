@@ -121,6 +121,45 @@ Legend2[MINER_NAME_power]: None
 LegendI[MINER_NAME_power]: Power
 LegendO[MINER_NAME_power]:
 
+# Fan Speed %
+Target[MINER_NAME_fan]: `${BITAXE_SCRIPT} -d MINER_IP -m fanspeed`
+MaxBytes[MINER_NAME_fan]: 100
+Title[MINER_NAME_fan]: MINER_INAME Fan Speed %
+PageTop[MINER_NAME_fan]: <h1>MINER_INAME - Fan Speed %</h1>
+Options[MINER_NAME_fan]: gauge, growright
+YLegend[MINER_NAME_fan]: Speed %
+ShortLegend[MINER_NAME_fan]: %
+Legend1[MINER_NAME_fan]: Fan Speed
+Legend2[MINER_NAME_fan]: None
+LegendI[MINER_NAME_fan]: Fan Speed
+LegendO[MINER_NAME_fan]:
+
+# Fan Speed RPM
+Target[MINER_NAME_rpm]: `${BITAXE_SCRIPT} -d MINER_IP -m fanrpm -m fan2rpm`
+MaxBytes[MINER_NAME_rpm]: 20000
+Title[MINER_NAME_rpm]: MINER_INAME Fan Speed RPM
+PageTop[MINER_NAME_rpm]: <h1>MINER_INAME - Fan Speed RPM</h1>
+Options[MINER_NAME_rpm]: gauge, growright, nopercent
+YLegend[MINER_NAME_rpm]: Speed RMP
+ShortLegend[MINER_NAME_rpm]: RPM
+Legend1[MINER_NAME_rpm]: Fan 1 Speed
+Legend2[MINER_NAME_rpm]: Fan 2 Speed
+LegendI[MINER_NAME_rpm]: Fan 1
+LegendO[MINER_NAME_rpm]: Fan 2
+
+# Response time
+Target[MINER_NAME_response]: `${BITAXE_SCRIPT} -d MINER_IP -m power`
+MaxBytes[MINER_NAME_response]: 10000
+Title[MINER_NAME_response]: MINER_INAME Response time
+PageTop[MINER_NAME_response]: <h1>MINER_INAME - Response Time</h1>
+Options[MINER_NAME_response]: gauge, growright, nopercent
+YLegend[MINER_NAME_response]: Response time
+ShortLegend[MINER_NAME_response]: ms
+Legend1[MINER_NAME_response]: Response Time
+Legend2[MINER_NAME_response]: None
+LegendI[MINER_NAME_response]: Response Time
+LegendO[MINER_NAME_response]:
+
 # Error Percentage
 Target[MINER_NAME_error]: `${BITAXE_SCRIPT} -d MINER_IP -m errorperc`
 MaxBytes[MINER_NAME_error]: 100
@@ -146,6 +185,19 @@ Legend1[MINER_NAME_diff]: diff
 Legend2[MINER_NAME_diff]: None
 LegendI[MINER_NAME_diff]: Dificulty
 LegendO[MINER_NAME_diff]:
+
+# Share acceptance rate
+Target[MINER_NAME_share]: `${BITAXE_SCRIPT} -d MINER_IP -m sharesAccepted -m sharesRejected`
+MaxBytes[MINER_NAME_share]: 5000
+Title[MINER_NAME_share]: MINER_INAME Shares 
+PageTop[MINER_NAME_share]: <h1>MINER_INAME - Shares Acceptance Rate</h1>
+Options[MINER_NAME_share]: gauge, growright, nopercent
+YLegend[MINER_NAME_share]: Shares
+ShortLegend[MINER_NAME_share]: Shares
+Legend1[MINER_NAME_share]: Accepted
+Legend2[MINER_NAME_share]: Expected
+LegendI[MINER_NAME_share]: Accepted
+LegendO[MINER_NAME_share]: Rejected
 
 # Uptime only (second metric 0)
 Target[MINER_NAME_uptime]: `${BITAXE_SCRIPT} -d MINER_IP -m uptime`
