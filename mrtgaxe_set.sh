@@ -41,6 +41,8 @@ MINER_INAME=$(echo -n $NAME)
 MINER_IP=$(echo -n $DEVICE)
 FILENAME=$(echo -n $MINER_NAME.cfg)
 
+mkdir -p $BITAXE_MINERS_DIR
+
 if [ $FORCE -eq 0 ] ; then
      if [ -f $BITAXE_MINERS_DIR/$FILENAME ] ; then
 	     echo "File already existis, use -f to force overwrite"
