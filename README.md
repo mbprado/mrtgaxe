@@ -76,21 +76,21 @@ By default, Busybox runs on port **9999** to avoid conflicts with other services
 
 #### Scripts 
 
-**mrtgaxe_set.sh** -d <device_ip> -n <name> [-f]  
+`# mrtgaxe_set.sh -d <device_ip> -n <name> [-f]`  
 This script is used to create configuration files for MRTG. Creating multiple files will create multiple devices in dashboard.  
 Files are saved inside **./miners** directory 
 
 Options:  
-**-d**: Defines the device to be monirtored. IP address or hostname. A single device per file, for multiple devices, create multiple files.  
-**-n**: Device name that will be shown in the metrics and dashboard. Quote names with spaces and special characters.  
-**-f**: By default mrtgaxe prevents rewriting files with same device name. Use this option to overcome it.  
+- `-d`: Defines the device to be monirtored. IP address or hostname. A single device per file, for multiple devices, create multiple files.  
+- `-n`: Device name that will be shown in the metrics and dashboard. Quote names with spaces and special characters.  
+- `-f`: By default mrtgaxe prevents rewriting files with same device name. Use this option to overcome it.  
 
-**mrtgaxe_get.sh** -d <bitaxe_ip> -m metric1 [-m metric2]  
+`# mrtgaxe_get.sh -d <bitaxe_ip> -m metric1 [-m metric2]`   
 This script is the interface between Bitaxes and MRTG. Its simple task is translate json replies into mrtg readable metrics. There is no need to interact with this script unless you wish to troubleshoot or customize.   
 
 Options:  
-**-d**: Defines the host to be monitored. IP address or hostname. A single device per request.   
-**-m**: Metrics to be taken from the device. supports multiple -m metrics, however note that MRTG can handle only **two** metrics per graph.  
+- `-d`: Defines the host to be monitored. IP address or hostname. A single device per request.   
+- `-m`: Metrics to be taken from the device. supports multiple -m metrics, however note that MRTG can handle only **two** metrics per graph.  
 
 Typical output:
 ```bash
@@ -99,13 +99,13 @@ metric2
 system_uptime
 system_information
 ```
-**mrtgaxe_run.sh** [-i]  
+`# mrtgaxe_run.sh [-i]`  
 This script do all the necessary checks, set the parameters and run both MRTG and Busybox. This is the entrypoint for MRTGAxe.  
 
 Options:  
-**-i**: Index file creation. By default, the index.html file(dashboard) is created only at the first run. Use this option if you want to recreate it.  
+- `-i`: Index file creation. By default, the index.html file(dashboard) is created only at the first run. Use this option if you want to recreate it.  
 
-**mrtgaxe_stop.sh**  
+`# mrtgaxe_stop.sh`  
 Self-explanatory. This script stops MRTG and Busybox.  
 
 Options:  
