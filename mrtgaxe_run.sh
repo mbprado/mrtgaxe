@@ -1,30 +1,36 @@
 #!/bin/bash
+#0.1.34
 BUSYBOX_PORT=9999
 LOCAL_IP=$(hostname -I | cut -d' ' -f1)
 INDEX=0
+REQUIREMENTS=(/usr/bin/jq /usr/bin/busybox /usr/bin/mrtg)
+
 if [[ $1 == "-h" ]] ; then echo "Options: -i - Force index rebuild" ; exit 1 ; fi
 if [[ $1 == "-i" ]] ; then INDEX=1 ; fi
 
 export BITAXE_DIR=$PWD
 export BITAXE_SCRIPT=$PWD/mrtgaxe_get.sh
 
+#Requirements verification function:
+chk_pkg () {
+	if [ ! -f "$1" ] ; then
+		echo "$1 not found. Install the package"
+		exit 254
+	# Debug:	
+	#else
+	#	echo "$1 found. Godd to go"
+	fi
+
+}
 
 #Set the configuration file:
 sed -i "s|^WorkDir:.*|WorkDir: $BITAXE_DIR/mrtg|" mrtg.cfg
 sed -i "s|^Include:.*|Include: $BITAXE_DIR/miners/*.cfg|" mrtg.cfg
 
-# Check if busybox is installed 
-busybox > /dev/null 2>&1
-if [ $? -ne 0 ] ; then
-	echo busybox not installed
-	exit 255
-fi
-
-# Check if mrtg is installed
-if [ ! -f /usr/bin/mrtg ] ; then
-	echo mrtg not installed
-	exit 255
-fi
+# Check required binaries
+for pkg in ${REQUIREMENTS[@]} ; do
+	chk_pkg $pkg
+done
 
 mkdir -p $PWD/mrtg
 mkdir -p $PWD/miners

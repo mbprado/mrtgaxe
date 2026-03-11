@@ -1,4 +1,5 @@
 #!/bin/bash
+#0.1.34
 DEVICE=""
 NAME=""
 FORCE=0

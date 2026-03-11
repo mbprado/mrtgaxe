@@ -1,4 +1,5 @@
 #!/bin/bash
+#0.1.34
 MRTG_PID=$(cat $PWD/mrtg.pid)
 
 kill $MRTG_PID 2> /dev/null
