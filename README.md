@@ -36,7 +36,7 @@ All you need is a Linux with **MRTG** and **Busybox** installed. Both packages a
 
 ```bash
 sudo apt update
-sudo apt -y install mrtg busybox
+sudo apt -y install mrtg busybox jq
 ```
 ---
 ## Quick Start
