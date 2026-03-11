@@ -26,11 +26,11 @@ This is intended for long term analysys, while AxeOS interface by default does't
 - **Why it is not written in Python?**: While it would be still very convenient, Python and its libraries requires extra setup and storage space.
 - **MRTG interface is so ugly and seems outdated**: That's true, there are many options out there with better interfaces, like Graphana, but the intention here is easy and ligh setup (M.I.S.S.)
 - **Can I use it with Apache, Nginx?**: Absolutely. You can use only the mrtg.cfg file and setup it in your own web environment.
-- **Any plans porting it to Windos/Mac?**: Yes, probably with docker but at the cost of simplicity of deployment.
+- **Any plans porting it to Windos/Mac?**: Yes, probably with docker, but at the cost of simplicity of deployment.
 
 ---
 ## Prerequisites 
-All you need is a Linux with **MRTG** and **Busybox** installed. Both packages are found on the main repository of most distros. This quide will assume that you have Raspbian installed in a Raspberry Pi, but it can theoretically run in any other machine. I'm not covering how to make a initial Respberry Pi setup, but it can be easily found in form of several guides over the internet.
+All you need is a Linux with **MRTG** and **Busybox** installed. Both packages are found on the main repository of most distros. This guide will assume that you have Raspbian installed in a Raspberry Pi, but it can theoretically run in any other machine. I'm not covering how to make a initial Respberry Pi setup, but it can be easily found in form of several guides over the internet.
 
 1. install the required packages:
 
@@ -57,7 +57,9 @@ Note: If the name contains spaces, it must be placed between quotes.
 ./mrtgaxe_set.sh -d 192.168.0.200 -n "Miner 1"
 ```
 
-3. Start MRTG
+Repeat the process for additional decices. In this case a file for each device will be created.   
+
+3. Start MRTGaxe
 ```bash
 ./mrtgaxe_run.sh
 ```
@@ -68,7 +70,7 @@ Note: If the name contains spaces, it must be placed between quotes.
 #### Accessing the graphics
 
 If the script runs fine, you will see the access link in the bottom of the screen.    
-By default, Busybox runs on port **9999** to avoid conflicts with other services you could eventually have. It can be changed setting the PORT variable in the mrtgaxe_run.sh
+By default, Busybox runs on port **9999** to avoid conflicts with other services you could eventually have. This can be changed setting the PORT variable in the mrtgaxe_run.sh
 
 <img width="1148" height="927" alt="Screenshot 2026-03-10 at 13 26 18" src="https://github.com/user-attachments/assets/192e02fb-b08c-42e9-bb9b-b3b0d3e99c0a" />
 
@@ -80,11 +82,11 @@ Files are saved inside **./miners** directory
 
 Options:  
 **-d**: Defines the device to be monirtored. IP address or hostname. A single device per file, for multiple devices, create multiple files.  
-**-n**: Device the device name that will be shown in the metrics and dashboard. Quote names with spaces and special characters.  
+**-n**: Device name that will be shown in the metrics and dashboard. Quote names with spaces and special characters.  
 **-f**: By default mrtgaxe prevents rewriting files with same device name. Use this option to overcome it.  
 
 **mrtgaxe_get.sh** -d <bitaxe_ip> -m metric1 [-m metric2]  
-This script is the interface between Bitaxes and MRTG. Its simple task is translate json replies into mrtg readable metrics. There is no need to interact with this script except for troubleshooting or customization. 
+This script is the interface between Bitaxes and MRTG. Its simple task is translate json replies into mrtg readable metrics. There is no need to interact with this script unless you wish to troubleshoot or customize.   
 
 Options:  
 **-d**: Defines the host to be monitored. IP address or hostname. A single device per request.   
