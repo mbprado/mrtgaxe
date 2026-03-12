@@ -1,4 +1,4 @@
-# MRTGAxe
+# MRTGAxe (A simple monitoring tool for Bitaxe)
 
 MRTGaxe is a simple lightweight monitoring solution for esp-miner based mining devices such as Bitaxe and Nerdaxe. It's suitable for use with multiple devices and plots system metrics using **MRTG** and **BusyBox**. 
 Designed for simplicity, it allows you to quickly deploy monitoring with minimal setup and resource usage.  
