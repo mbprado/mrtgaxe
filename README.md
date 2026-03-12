@@ -36,7 +36,7 @@ All you need is a Linux with **MRTG** and **Busybox** installed. Both packages a
 
 ```bash
 sudo apt update
-sudo apt -y install mrtg busybox jq
+sudo apt -y install mrtg busybox jq bc
 ```
 ---
 ## Quick Start
@@ -84,6 +84,7 @@ Options:
 - `-d`: Defines the device to be monirtored. IP address or hostname. A single device per file, for multiple devices, create multiple files.  
 - `-n`: Device name that will be shown in the metrics and dashboard. Quote names with spaces and special characters.  
 - `-f`: By default mrtgaxe prevents rewriting files with same device name. Use this option to overcome it.  
+
 
 `# mrtgaxe_get.sh -d <bitaxe_ip> -m metric1 [-m metric2]`   
 This script is the interface between Bitaxes and MRTG. Its simple task is translate json replies into mrtg readable metrics. There is no need to interact with this script unless you wish to troubleshoot or customize.   
