@@ -59,7 +59,8 @@ Note: If the name contains spaces, it must be placed between quotes.
 
 Repeat the process for additional decices. In this case a file for each device will be created.   
 
-3. Start MRTG
+3. Start MRTG  
+
 Start mrtg witout parameters, then it will create default configs.
 ```bash
 env LANG=C /usr/bin/mrtg
