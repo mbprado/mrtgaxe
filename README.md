@@ -58,18 +58,25 @@ Note: If the name contains spaces, it must be placed between quotes.
 ```
 
 Repeat the process for additional decices. In this case a file for each device will be created.   
+3. Start MRTG
+Start mrtg witout parameters, then it will create default configs.
+```bash
+env LANG=C /usr/bin/mrtg
+```
 
-3. Start MRTGaxe
+4. Start MRTGaxe
 ```bash
 ./mrtgaxe_run.sh
 ```
+
+The scrrpt will loa dthe services an you will see the address to access MRTG: http://YOUR_IP:9999
 
 ---
 ### Usage:
 
 #### Accessing the graphics
 
-If the script runs fine, you will see the access link in the bottom of the screen.    
+If the script runs fine, you should see the access link in the bottom of the screen.    
 By default, Busybox runs on port **9999** to avoid conflicts with other services you could eventually have. This can be changed setting the PORT variable in the mrtgaxe_run.sh
 
 <img width="1148" height="927" alt="Screenshot 2026-03-10 at 13 26 18" src="https://github.com/user-attachments/assets/192e02fb-b08c-42e9-bb9b-b3b0d3e99c0a" />
