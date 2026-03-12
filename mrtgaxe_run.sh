@@ -1,9 +1,9 @@
 #!/bin/bash
-#0.1.34
+#0.1.37
 BUSYBOX_PORT=9999
 LOCAL_IP=$(hostname -I | cut -d' ' -f1)
 INDEX=0
-REQUIREMENTS=(/usr/bin/jq /usr/bin/busybox /usr/bin/mrtg)
+REQUIREMENTS=(/usr/bin/jq /usr/bin/busybox /usr/bin/mrtg /usr/bin/bc)
 
 if [[ $1 == "-h" ]] ; then echo "Options: -i - Force index rebuild" ; exit 1 ; fi
 if [[ $1 == "-i" ]] ; then INDEX=1 ; fi

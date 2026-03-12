@@ -1,5 +1,5 @@
 #!/bin/bash
-# 0.1.34
+# 0.1.37
 # MRTG-compatible script for Bitaxe metrics
 
 BITAXE_IP=""
@@ -63,6 +63,7 @@ get_value() {
 	fanspeed) echo "$(get_metric '.fanspeed // 0')" ;;
 	fanrpm) echo "$(get_metric '.fanrpm // 0')" ;;
 	fan2rpm) echo "$(get_metric '.fan2rpm // 0')" ;;
+	efficiency) echo "$(get_metric '.power // 0') / ($(get_metric '.hashRate // 0') / 1000)" | bc -l ;; 
         *) echo "0" ;;
     esac
 }

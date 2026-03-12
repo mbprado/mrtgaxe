@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#0.1.37
 DEVICE=""
 NAME=""
 FORCE=0
@@ -68,8 +68,8 @@ clear
 case $CHOICE in
 
 1)	
-apt uptate 
-apt -fy install mrtg busybox 
+apt update 
+apt -fy install mrtg busybox jq bc
 if [ $? -eq 0 ] ; then 
 	dialog --msgbox "Requirements succesfully installed" 6 30
 else 
@@ -79,7 +79,11 @@ fi
 
 2)
 	$BITAXE_DIR/mrtgaxe_run.sh
-	if [ $? -ne 0 ] ; then
+	if [ $? -eq 254 ] ; then
+		dialog --msgbox "Failed to start.\\nThere are missing packages. Install the requirements." 8 40
+	elif [ $? -eq 0 ] ; then
+		dialog --msgbox "Success." 6 30
+	else 
 		dialog --msgbox "Failed to start.\\nCheck if MRTG or Busybox are not running already.\\nStop MRTGAxe and try again." 8 60
 	fi
 	;;

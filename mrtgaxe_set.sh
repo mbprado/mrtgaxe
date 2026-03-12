@@ -1,5 +1,5 @@
 #!/bin/bash
-#0.1.34
+#0.1.37
 DEVICE=""
 NAME=""
 FORCE=0
@@ -149,6 +149,19 @@ Legend1[MINER_NAME_hash_1m]: Hash Rate
 Legend2[MINER_NAME_hash_1m]: Expected
 LegendI[MINER_NAME_hash_1m]: Current
 LegendO[MINER_NAME_hash_1m]: Expected
+
+# Hash Efficiency
+Target[MINER_NAME_effi]: `${BITAXE_SCRIPT} -d MINER_IP -m efficiency`
+MaxBytes[MINER_NAME_effi]: 5000
+Title[MINER_NAME_effi]: MINER_INAME Power Efficiency
+PageTop[MINER_NAME_effi]: <h1>MINER_INAME - Power Efficiency</h1>
+Options[MINER_NAME_effi]: gauge, growright, nopercent
+YLegend[MINER_NAME_effi]: Efficiency
+ShortLegend[MINER_NAME_effi]: J/Th
+Legend1[MINER_NAME_effi]: Efficiency
+Legend2[MINER_NAME_effi]: None
+LegendI[MINER_NAME_effi]: Efficiency
+LegendO[MINER_NAME_effi]: 
 
 # Response time
 Target[MINER_NAME_response]: `${BITAXE_SCRIPT} -d MINER_IP -m power`
