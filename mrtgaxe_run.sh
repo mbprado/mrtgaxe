@@ -51,6 +51,7 @@ fi
 # Load Busybox
 setsid busybox httpd -p $BUSYBOX_PORT -h $BITAXE_DIR/mrtg >/dev/null 2>&1 &
 if [ $? -eq 0 ] ; then 
+	ps -eo pid,args --no-headers | grep  -m 1 "busybox httpd -p $BUSYBOX_PORT"  | cut -d' ' -f1 > $PWD/busybox.pid 
 	echo "Daemonizing Busybox ..."
 	echo "To access the dashboard head to: http://$LOCAL_IP:$BUSYBOX_PORT"
 fi
