@@ -34,7 +34,8 @@ fi
 
 while true; do
 
-if [ $IAM -eq "docker" ] ; then
+Check it it is running inside docker:
+if [[ $IAM == "docker" ]] ; then
 	LOCAL_IP="127.0.0.1"
 fi
 
