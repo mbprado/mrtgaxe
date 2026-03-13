@@ -1,5 +1,5 @@
 #!/bin/bash
-# 0.1.37
+# 0.1.51
 # MRTG-compatible script for Bitaxe metrics
 
 BITAXE_IP=""
