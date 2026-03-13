@@ -26,6 +26,7 @@ This is intended for long term analysys, while AxeOS interface by default does't
 - **Why it is not written in Python?**: While it would be still very convenient, Python and its libraries requires extra setup and storage space.
 - **MRTG interface is so ugly and seems outdated**: That's true, there are many options out there with better interfaces, like Graphana, but the intention here is easy and ligh setup (M.I.S.S.)
 - **Can I use it with Apache, Nginx?**: Absolutely. You can use only the mrtg.cfg file and setup it in your own web environment.
+- **I can't see the detail of last 5 minutes**: For realtime analysis, use the AxeOS interface instead. MRTG plots average 5 minute graphics and should be used for anomaly identification, recurrent issues and historical data for example. 
 - **Any plans porting it to Windos/Mac?**: Yes, probably with docker, but at the cost of simplicity of deployment.
 
 ---
@@ -39,7 +40,7 @@ sudo apt update
 sudo apt -y install mrtg busybox jq bc
 ```
 ---
-## Quick Start
+## Quick Start - Manual Setup
 
 1. Clone the repository:
 
@@ -61,7 +62,7 @@ Repeat the process for additional decices. In this case a file for each device w
 
 3. Start MRTG  
 
-Start mrtg witout parameters, then it will create default configs.
+Start mrtg without parameters, then it will create default configs.
 ```bash
 env LANG=C /usr/bin/mrtg
 ```
@@ -72,7 +73,9 @@ env LANG=C /usr/bin/mrtg
 ```
 
 The scrrpt will loa dthe services an you will see the address to access MRTG: http://YOUR_IP:9999
-
+---
+## Docker:
+... working on it
 ---
 ### Usage:
 
