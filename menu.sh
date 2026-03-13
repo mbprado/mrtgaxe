@@ -3,7 +3,8 @@
 DEVICE=""
 NAME=""
 FORCE=0
-
+LOCAL_IP=$(hostname -I | cut -d' ' -f1)
+BUSYBOX_PORT=9999
 BITAXE_DIR=$PWD
 BITAXE_MINERS_DIR=$PWD/miners
 
@@ -32,6 +33,10 @@ if [ ! -f /usr/bin/dialog ] ; then
 fi
 
 while true; do
+
+if [ $IAM -eq "docker" ] ; then
+	LOCAL_IP="127.0.0.1"
+fi
 
 FORCE_LABEL="OFF"
 [ "$FORCE" -eq 1 ] && FORCE_LABEL="ON"
@@ -79,12 +84,13 @@ fi
 
 2)
 	$BITAXE_DIR/mrtgaxe_run.sh
-	if [ $? -eq 254 ] ; then
+	STATUS=$?
+	if [ $STATUS -gt 200 ] ; then
 		dialog --msgbox "Failed to start.\\nThere are missing packages. Install the requirements." 8 40
-	elif [ $? -eq 0 ] ; then
-		dialog --msgbox "Success." 6 30
+	elif [ $STATUS -eq 0 ] ; then
+		dialog --msgbox "Success.\nTo access the dashboard head to: http://$LOCAL_IP:$BUSYBOX_PORT" 8 40
 	else 
-		dialog --msgbox "Failed to start.\\nCheck if MRTG or Busybox are not running already.\\nStop MRTGAxe and try again." 8 60
+		dialog --msgbox "Failed to start.\\nThere is another MRTG instance running.\\nStop MRTGAxe and try again." 8 60
 	fi
 	;;
 

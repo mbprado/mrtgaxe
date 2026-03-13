@@ -45,8 +45,8 @@ fi
 
 # Load mrtg
 LANG=C mrtg --daemon $PWD/mrtg.cfg
-if [ $? -ne 0 ] ; then 
-	exit 255
+if [ $? -eq 25 ] ; then 
+	exit 25
 fi
 # Load Busybox
 setsid busybox httpd -p $BUSYBOX_PORT -h $BITAXE_DIR/mrtg >/dev/null 2>&1 &
