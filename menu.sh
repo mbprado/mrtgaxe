@@ -6,7 +6,7 @@ FORCE=0
 LOCAL_IP=$(hostname -I | cut -d' ' -f1)
 BUSYBOX_PORT=9999
 BITAXE_DIR=$PWD
-BITAXE_MINERS_DIR=$PWD/miners
+BITAXE_MINERS_DIR=$BITAXE_DIR/miners
 
 validate_ip() {
     local ip=$1
@@ -83,7 +83,10 @@ else
 fi
 	;;
 
-2)
+2)      if ! ls $BITAXE_MINERS_DIR/*.cfg >/dev/null 2>&1 ; then
+		dialog --msgbox "There are no miners configured.\nAdd a miner before start MRTGAxe" 8 40
+		
+	else
 	$BITAXE_DIR/mrtgaxe_run.sh
 	STATUS=$?
 	if [ $STATUS -gt 200 ] ; then
@@ -93,6 +96,7 @@ fi
 	else 
 		dialog --msgbox "Failed to start.\\nThere is another MRTG instance running.\\nStop MRTGAxe and try again." 8 60
 	fi
+fi
 	;;
 
 "S")   
