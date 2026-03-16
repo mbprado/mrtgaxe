@@ -73,11 +73,12 @@ env LANG=C /usr/bin/mrtg
 ```
 
 The scrrpt will loa dthe services an you will see the address to access MRTG: http://YOUR_IP:9999
+
 ---
-## Docker:
+### Docker:  
 ... working on it
 ---
-### Usage:
+## Usage:
 
 #### Accessing the graphics
 
