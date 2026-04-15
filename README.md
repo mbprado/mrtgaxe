@@ -21,7 +21,7 @@ This is intended for long term analysys, while AxeOS interface by default does't
 - **MRTG (Multi Router Traffic Grapher)**: Generates graphs and logs data efficiently, is very robust and since MRTG graphics never grow, even a small storage can accomodate the png files.
 - **BusyBox**: Provides essential Unix tools in a single lightweight binary, reducing installation complexity and storage requirements.  
 
-## Caeveats, Drawbacks "FAQ"
+## Caveats, Drawbacks "FAQ"
 
 - **Why it is not written in Python?**: While it would be still very convenient, Python and its libraries requires extra setup and storage space.
 - **MRTG interface is so ugly and seems outdated**: That's true, there are many options out there with better interfaces, like Graphana, but the intention here is easy and ligh setup (M.I.S.S.)
